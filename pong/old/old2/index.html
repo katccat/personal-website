@@ -1,0 +1,44 @@
+<html>
+<link rel="icon" type="image/png" href="favicon.png">
+<head>
+	<title>Pong (Local)</title>
+	<meta charset="UTF-8">
+	<style>
+		canvas {
+     		-webkit-touch-callout: none;
+     		-webkit-user-select: none;
+     		-khtml-user-select: none;
+     		-moz-user-select: none;
+     		-ms-user-select: none;
+     		-o-user-select: none;
+     		user-select: none;
+     	}
+     	button {
+     		/*font-size: 15px;*/
+     	}
+     	p {
+     		font-size: 15px;
+     		font-family: "Helvetica", "Arial", sans-serif;
+     	}
+	</style>
+</head>
+
+<br>
+<div style="text-align: center;">
+
+<canvas id="canvas" style="background: black;background-image: url('background.png');" width="600" height="360">
+</canvas>
+<br><br><br>
+<button onclick="reset();">reset</button>
+<button onclick="pause();" id="button">pause</button>
+
+<br><br>
+<button onmousedown="player.key=38;" onmouseup="player.key=null;"
+ontouchstart="player.key=38;" ontouchend="player.key=null;">⬆️</button>
+<button onmousedown="player.key=40;" onmouseup="player.key=null;"
+ontouchstart="player.key=40;" ontouchend="player.key=null;">⬇️</button>
+
+<p id="score"></p>
+</div>
+<script src="script.js"></script>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+	<title>PDF Test</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style type="text/css">
+		body {
+			font-family: sans-serif, "Helvetica", "Arial";
+		}
+		#result {
+			visibility: hidden;
+		}
+	</style>
+</head>
+<body>
+	<h1>PDF Test</h1>
+	<p>Upload your PDF below:</p>
+	<input 
+	type="file" 
+	id="pdfForm" 
+	accept=".pdf">
+	<br>
+	<button onclick="upload()">Submit</button>
+	<br>
+	<p id="result"></p>
+</body>
+<script>
+	const url = "https://clayrobot.net:8000/backend/pdf";
+	const pdfForm = document.getElementById("pdfForm");
+	const result = document.getElementById("result");
+	function upload() {
+		let files = pdfForm.files;
+		if (files.length > 0) {
+			const formData = new FormData();
+			formData.append('pdf', files[0]);
+			fetch(url, {
+				method: "POST",
+				body: formData,
+			})
+			.then((response) => response.text())
+			.then((text) => result.textContent = text);
+			result.style.visibility = "visible";
+		}
+	}
+</script>
+</html>

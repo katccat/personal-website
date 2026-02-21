@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+  <head>
+	<meta name="viewport" content="initial-scale=1">
+	<style>
+	
+	</style>	
+</head>
+  <body>
+      <div style="text-align: center;">
+	  <img width=20% src="mental.jpg"><br>
+	  <b>Joe Biden has been asleep for...</b>
+          <h1 id = "counter"> </h1>
+	  <a href="2048"><img src="flag.gif"></a>
+      </div>
+  </body>
+
+  <script>
+    function update(){
+    count_id = "counter"
+    var countertext = document.getElementById(count_id);
+    var ms = Date.now() - Date.parse('25 April 2019 00:12:00 GMT')
+    var seconds = Math.floor(ms / 1000),
+    minutes = Math.floor(seconds / 60),
+    hours   = Math.floor(minutes / 60),
+    days    = Math.floor(hours / 24),
+    months  = Math.floor(days / 30),
+    years   = Math.floor(days / 365);
+
+    seconds %= 60;
+    minutes %= 60;
+    hours %= 24;
+    days %= 30;
+    months %= 12;
+
+    console.log(months)
+
+    count_id = "counter"
+    var countertext = document.getElementById(count_id);
+    countertext.textContent = (years.toString() +  ":"  + months.toString() +  ":"  + days.toString() +  ":"  + hours.toString() + ":" +  minutes.toString() + ":" + seconds.toString() + " YEARS.")
+    }
+
+    setInterval(update, 100)
+</script>
+</html>

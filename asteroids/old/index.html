@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<link rel="icon" type="image/png" href="favicon.png">
+<head>
+	<title>Asteroids 100</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body {
+			font-family: "Helvetica", "Arial", sans-serif;
+			color: white;
+			font-weight: lighter;
+			background-color: black;
+		}
+		b {
+			font-weight: normal;
+		}
+		.toggle {
+			text-decoration: none;
+			cursor: pointer;
+		}
+		.toggle:hover {
+			text-decoration: underline;
+		}
+     	#container {
+     		position: absolute;
+  			top: 50%;
+  			left: 40%;
+  			transform: translate(-50%, -50%);
+  			background-color: black;
+  			border: 1px solid white;
+     	}
+     	#container, canvas {
+     		width: 720px;
+     		height: 624px;/*15: 13;*/
+     	}
+     	#paused {
+     		position: absolute;
+     		z-index: 2;
+     		margin-left: 25px;
+     	}
+     	#stats {
+     		position: absolute;
+     		z-index: 2;
+     		right: 25px;
+     		text-align: right;
+     	}
+     	#back {
+     		position: absolute;
+     		z-index: 1;
+     		image-rendering: pixelated;
+     	}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<p id="paused"></p>
+		<p id="stats"></p>
+		<canvas id="back" width="720" height="624"></canvas>
+	</div>
+	<div style="text-align: right;">
+	<b>Controls</b>
+	<p>Left & Right to turn<br>X to accelerate<br>Z to shoot<br>P to pause<br>R to restart</p>
+	<br>
+	<br>
+	<b>Game Rules<br>(only affect new objects)</b>
+	<p style="color: green;" class="toggle" onclick="
+	asteroids_can_collide =! asteroids_can_collide;toggleColor.call(this, asteroids_can_collide)">Toggle asteroids_can_collide</p>
+	<script src="utils.js"></script>
+	<script src="objects.js"></script>
+	<script src="main.js"></script>
+</body>
+</html>

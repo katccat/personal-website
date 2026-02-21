@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<link rel="icon" type="image/png" href="/robots/favicon.png">
+<link rel="stylesheet" href="/styles.css?v=6">
+<head>
+	<title id="title">ClayRobot.net</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<style>
+		@media only screen and (max-width: 600px) {
+			.panel2 {
+				display: none;
+			}
+		}
+	</style>
+</head>
+<body>
+<div style="display: none">
+	<img src="/images/hover/asteroids.gif">
+	<img src="/images/hover/pong.gif">
+	<img src="/images/hover/clay.gif">
+	<img src="/images/hover/flower.gif">
+	<img src="/construction.png">
+	<img src="/images/hover/flower.gif">
+	<img src="/robots/robot02.png">
+	<img src="/robots/robot2.png">
+	<img src="/images/woodframe.png">
+</div>
+
+<div class="wrapper">
+	<div class="mainpanel">
+		<div style="display: block; line-height: .9; height: fit-content; margin: 8px 0 8px 0;">
+			<h3 style="margin: 0px">Welcome to</h3>
+			<h1 style="margin: 0px">ClayRobot.net</h1>
+		</div>
+		<img class="bespoke" src="/robots/robotma_clean.png" style="width: 250px">
+		<nav>
+			<a href="https://m.youtube.com/khancoolcat">3D Animations</a> | <a href="https://clayrobot.artstation.com">Artwork</a> | <a href="/faq">FAQ</a>
+		</nav>
+		<div id="links">
+			<b>Games</b>
+			<br>
+				<a href="/love" onmouseover="swap('love')"><img src="/love/icon.png" class="inline-icon"> Flower Game</a>
+				<br>
+				<a href="/pong" onmouseover="swap('pong')"><img src="/pong/favicon.png" class="inline-icon"> Classic Pong</a>
+				<br>
+				<a href="/asteroids" onmouseover="swap('asteroids')"><img src="/asteroids/favicon.png" class="inline-icon"> Asteroids 100</a>
+				<br>
+				<a onclick="loadGame('asteroids')"><img src="/asteroids/favicon.png" class="inline-icon"> Asteroids 100 Embed</a>
+				<br>
+				<a href="/delivery" onmouseover="swap('delivery')"><img src="/delivery/icon.png" class="inline-icon"> Delivery Demo</a>
+			<br>
+			<b>Other</b>
+			<br>
+				<a href="/poems">Poems</a><br>
+				<a href="/linkinpark">Linkin Park Fan Page</a><br>
+				<a href="https://damonwelber.com/randomplanes/">Random Planes</a><br>
+				<a href="/randombirds">Random Birds</a><br>
+				<a href="/find-robots-near-you">Find Robots Near You</a><br>
+				<a href="/top-smartest-robots">Top 6 Smartest Robots</a><br>
+				<a href="/about">Donate</a>
+
+			<br><br><br>
+		</div>
+	</div>
+
+	<div class="panel2">
+		<div id="featured-content">
+			<br>
+			<h2 id="header"></h2>
+			<div style="position: relative;">
+				<img id="thumbnail">
+			</div>
+			<div id="caption">
+				<p id="description"></p>
+			</div>
+		</div>
+		<div id="game-area" style="display: none;">
+			<br><br>
+			<canvas id="back" width="540" height="468"></canvas>
+		</div>
+	</div>
+
+</div>
+<img id="copyright" src="copyright.png" onclick="location.href = '/about'">
+
+<script>
+const header = document.getElementById("header");
+const thumbnail = document.getElementById("thumbnail");
+const text = document.getElementById("description");
+const featuredContent = document.getElementById("featured-content");
+const gameArea = document.getElementById("game-area");
+const importedScripts = [];
+
+function swap(link, delayTimeout = true) {
+	//unloadGame();
+	//gameArea.style.visibility = "hidden";
+	//featuredContent.style.visibility = "visible";
+	switch(link) {
+		default:
+			header.innerHTML = "404";
+			thumbnail.src = "/construction.png";
+			thumbnail.style.display = "inline-block";
+			thumbnail.classList.toggle("bespoke", false);
+			text.innerHTML = "";
+			break;
+		case "art":
+			header.innerHTML = "Featured Art";
+			thumbnail.src = "/images/hover/clay.gif";
+			thumbnail.style.display = "inline-block";
+			thumbnail.classList.toggle("bespoke", true);
+			text.innerHTML = "Visit <a href='https://clayrobot.artstation.com'>Art</a>!";
+			text.style = "text-align: center;"
+			featureIndex = 1;
+			break;
+		case "woosh":
+			header.innerHTML = "Featured Art";
+			thumbnail.src = "woosh.png";
+			thumbnail.style.display = "inline-block";
+			thumbnail.classList.toggle("bespoke", true);
+			text.innerHTML = "Visit <a href='https://clayrobot.artstation.com'>Art</a>!";
+			text.style = "text-align: center;"
+			featureIndex = 5;
+			break;
+		case "spongebob":
+			header.innerHTML = "Featured Art";
+			thumbnail.src = "/images/hover/spongebob.png";
+			thumbnail.style.display = "inline-block";
+			thumbnail.classList.toggle("bespoke", true);
+			text.innerHTML = "Visit <a href='https://clayrobot.artstation.com'>Art</a>!";
+			text.style = "text-align: center;"
+			featureIndex = 6;
+			break;
+		case "robotma-drawing":
+			header.innerHTML = "Featured Art";
+			thumbnail.src = "/robots/robotma-shir-edit.webp";
+			thumbnail.style.display = "inline-block";
+			thumbnail.classList.toggle("bespoke", true);
+			text.innerHTML = "Visit <a href='https://clayrobot.artstation.com'>Art</a>!";
+			text.style = "text-align: center;"
+			featureIndex = 0;
+			break;
+		case "love":
+			header.innerHTML = "Loves Me... Loves Me Not?";
+			thumbnail.src = "/images/hover/flower_large.gif";
+			thumbnail.style.display = "inline-block";
+			thumbnail.classList.toggle("bespoke", false);
+			text.innerHTML = "Based on the Super Mario 64 DS rec. room minigame.<br>(Press 'M' for music)";
+			text.style = "text-align: center;"
+			break;
+		case "pong":
+			header.innerHTML = "Classic Pong";
+			thumbnail.src = "/images/hover/pong.gif";
+			thumbnail.style.display = "inline-block";
+			thumbnail.classList.toggle("bespoke", false);
+			text.innerHTML = "A fast game of pong featuring 3 different colors. Press 'P' to pause and 'R' to restart!";
+			text.style = "text-align: left;"
+			featureIndex = 2;
+			break;
+		case "asteroids":
+			header.innerHTML = "Asteroids 100";
+			thumbnail.src = "/images/hover/asteroids.gif";
+			thumbnail.style.display = "inline-block";
+			thumbnail.classList.toggle("bespoke", false);
+			text.innerHTML = "You are a human sent to investigate a mysterious asteroid belt with the rumored property of being able to clone organic matter. However, your meddling soon brings the unwanted attention of Them, and you have to hold out and keep the area clear until rescuers can arrive. You can’t seem to find the way out, if there even is one. If this is Hell, is your place in Heaven taken?";
+			text.style = "text-align: left;";
+			featureIndex = 3;
+			break;
+		case "delivery":
+			header.innerHTML = "NEW Autobahn Delivery Inc. Demo";
+			thumbnail.src = "/images/hover/delivery.gif";
+			thumbnail.style.display = "inline-block";
+			thumbnail.classList.toggle("bespoke", true);
+			text.innerHTML = "Coming to Android & iOS!";
+			text.style = "text-align: center;";
+			featureIndex = 4;
+			break;
+	}
+	if (delayTimeout) {
+		clearTimeout(timeoutID);
+		timeoutID = setTimeout(changeFeature, 15000);
+	}
+}
+var featureIndex = 0;
+var timeoutID;
+function changeFeature() {
+	const features = [
+		"robotma-drawing",
+		"art",
+		"pong",
+		"asteroids",
+		"delivery",
+		"woosh",
+		"spongebob",
+	];
+	swap(features[featureIndex], false);
+	featureIndex++;
+	if (featureIndex >= features.length) featureIndex = 0;
+	timeoutID = setTimeout(changeFeature, 5000);
+}
+changeFeature();
+function loadGame(game) {
+	unloadGame();
+	featuredContent.style.display = "none";
+	gameArea.style.display = "block";
+	switch(game) {
+		case "asteroids":
+			var s = document.createElement('script');
+			s.src = "asteroids/combined.js";
+			document.head.appendChild(s);
+			importedScripts.push(s);
+			break;
+	}
+}
+function unloadGame() {
+	for (let i = 0; i < importedScripts.length; i++) {
+		importedScripts[i].remove();
+	}
+	importedScripts.length = 0;
+}
+</script>
+</body>
+</html>

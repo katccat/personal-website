@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<link rel="icon" type="image/jpg" href="icon.jpg">
+<head>
+	<title>Random Plane Generator</title>
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body {
+			margin: 0;
+		}
+		b {
+			font-family: "Georgia", "Garamond";
+		}
+		p {
+			font-size: 18px;
+		}
+		picture, img {
+			user-select: none;
+		}
+		#banner {
+			width: 100vw;
+			padding: 0;
+			margin: 0;
+			border: 0;
+		}
+		#year {
+			text-align: center;
+			width: 64px;
+		}
+		#disclaimer {
+			text-align: right;
+			margin: 0;
+			margin-left: auto;
+			font-style: italic;
+			font-size: 15px;
+			visibility: hidden;
+		}
+		#container {
+			width: fit-content;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 15px;
+		}
+		#name-container {
+			width: fit-content;
+			margin-left: auto;
+			margin-right: auto;
+			margin-bottom: 4px;
+			padding-left: 5vw;
+			padding-right: 5vw;
+			display: block;
+			text-align: center;
+		}
+		#name {
+			color: black;
+			text-decoration: none;
+			font-size: clamp(1vw, 25px, 5vw);
+		}
+		#image {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 90vw;
+			max-height: 51vh;
+			object-fit: contain;
+		}
+		#description {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: fit-content;
+			max-width: 90vw;
+		}
+		.mw-empty-elt {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<picture id="banner">
+		<source media="(min-width: 430px)" srcset="banner.png">
+		<source media="(max-width: 430px)" srcset="banner_small.png">
+		<img id="banner" src="banner.png">
+	</picture>
+	<div style="display: flex; margin: 0 5px 0;">
+		<button onclick="random_playne()">Which playne will choose you?</button>
+		<input type="text" id="year" placeholder="Year: Any" title="Year first flown
+Decades are available, e.g. '2010s'">
+		<p id="disclaimer">(image from Google)</p>
+	</div>
+	<div id="container">
+		<div id="name-container">
+			<b><a id="name" target="_blank"></a></b>
+		</div>
+		<img id="image" rel="noreferrer">
+		<p id="description"></p>
+	</div>
+	<div style="display: none">
+		<img src="no_image.png">
+		<img src="constellation.jpg">
+	</div>
+</body>
+<script src="script.js?v=13"></script>
+</html>

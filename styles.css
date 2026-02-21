@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+@font-face {
+	font-family: AppleGaramond;
+	src: url(fonts/AppleGaramond.ttf);
+}
+@font-face {
+	font-family: AppleGaramondLight;
+	src: url(fonts/AppleGaramond-Light.ttf);
+}
+.inline-icon {
+	display: inline;
+	height: 20px;
+}
+.wrapper {
+	display: inline-block;
+	height: 100vh;
+}
+.mainpanel {
+	height: inherit;
+	width: 305px;
+	background-color: #efefef;
+	padding-left: 20px;
+	padding-right: 20px;
+	background-image: url(images/noise2.png);
+	background-size: 50%;
+	float: left;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+.mainpanel::-webkit-scrollbar {
+  display: none;
+}
+#links {
+	text-align: left;
+	font-size: 25px;
+	margin-top: 10px;
+}
+.panel2 {
+	height: inherit;
+	color: #0a0a0a;
+	width: 640px;
+	box-sizing: border-box;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	background-color: #dedede;
+	float: left;
+	padding-left: 20px;
+	padding-right: 20px;
+	text-shadow:4px 2px 3px #aaaaaa;
+	background-image: url(images/noise1.png);
+}
+#copyright {
+position: fixed;
+bottom: 0px;
+right: 0px;
+padding-right: 20px;
+width: 132px;
+cursor: pointer;
+}
+.panel2::-webkit-scrollbar {
+  display: none;
+}
+
+#caption {
+	margin-left: 45px;
+	margin-right: 45px;
+}
+body {
+	font-family: "Helvetica", "Arial", sans-serif;
+	font-size: 18px;
+	text-align: center;
+	/*cursor: url(images/hans.png), auto;*/
+	background-image: url(images/original/flowers.png);
+	/*background-image: url("woosh.png");*/
+	background-color: black;
+	background-size: cover;
+	margin: 0;
+	padding: 0;
+}
+h1 {
+	font-family: AppleGaramond;
+	font-size:60px;
+	font-weight: lighter;
+	text-shadow:4px 2px 3px #aaaaaa;
+}
+h2 {
+	font-family: AppleGaramondLight;
+	font-size:45px;
+	font-weight: bold;
+}
+h3 {
+	font-family: AppleGaramondLight;
+	font-size:45px;
+	font-weight: lighter;
+}
+b {
+	font-family: AppleGaramondLight;
+	font-size:30px;
+	font-weight: light;
+}
+ul {
+	margin: 0px;
+	padding-left: 20px;
+}
+p {
+	font-family: "Open Sans";
+}
+a {
+	/*font-size: 23px;*/
+	font-weight: bold;
+}
+a:link, a:visited {
+	color: #2751a9
+}
+a:hover {
+	font-style: italic; color: #232323; text-shadow:4px 2px 3px #aaaaaa
+}
+#header {
+	margin: 10px;
+}
+#icon {
+	border: double 3px black;
+	width: 300px;
+	image-rendering: pixelated;
+}
+#thumbnail {
+	max-width: 100%;
+	max-height: 500px;
+	object-fit: contain;
+	image-rendering: pixelated;
+}
+.bespoke {
+	max-width: 90% !important;
+	border-image-source: url("/images/woodframe.png");
+	border-image-slice: 65;
+	border-image-repeat: stretch;
+	border-width: 30px;
+	border-style: solid;
+}
+#bubble {
+	position: absolute;
+	margin: 0 0 0 0;
+	padding: 0;
+	visibility: hidden;
+	image-rendering: pixelated;
+	translate: -150px;
+	z-index: 1;
+}

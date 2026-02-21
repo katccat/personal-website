@@ -1,0 +1,95 @@
+<html>
+<link rel="icon" type="image/png" href="assets/neutral.png">
+<!--<link rel="stylesheet" href="styles.css">-->
+<head>
+	<title>Loves Me?</title>
+	<meta name="viewport" content="initial-scale=1">
+	<style>
+		canvas {
+     		-webkit-touch-callout: none;
+     		-webkit-user-select: none;
+     		-khtml-user-select: none;
+     		-moz-user-select: none;
+     		-ms-user-select: none;
+     		-o-user-select: none;
+     		user-select: none;
+  		}
+	</style>
+</head>
+
+<br>
+<div style="text-align: center;">
+<canvas id="canvas" style="background-image: url('assets/water.webp')" width="256" height="192" title="click me!" onclick="i++; petal_gen(petals); check(petals)">
+
+<img id="neutral" src="assets/neutral.png">
+<img id="yes" src="assets/yes.png">
+<img id="no" src="assets/no.png">
+<img id="win" src="assets/win.png">
+<img id="defeat" src="assets/defeat.png">
+<img id="petal_image" src="assets/petal.png">
+
+<script>
+	sf = 1;
+	canvas = document.getElementById("canvas");
+  	ctx = canvas.getContext("2d");
+  	canvas.width = 256*sf;
+  	canvas.height = 192*sf;
+  	max = 18;
+  	function swapImage(img_name) {
+		//ctx.clearRect(0, 0, canvas.width, canvas.height);
+		ctx.drawImage(img_name, canvas.width/2-64*sf/2, canvas.height/2-64*sf/2, 64*sf, 64*sf);
+	}
+	window.onload = function start2() {
+		start();
+		petal_gen(petals);
+		swapImage(neutral);
+	}
+	function start() {
+		petals = 3;//Math.floor(Math.random() * max) + 1;
+		i = 0;
+		//swapImage(neutral);
+	}
+
+	// petal gen
+	function petal_gen(amount) {
+		inset = 5;
+		h = ((canvas.height/2-64/2)+inset) - 49;
+		w = (canvas.width/2) - 16;
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		for (let p = 0; p < amount-i; p++) {
+			// (left-right) (up-down)
+			// math: half of height minus half of bud height
+			ctx.drawImage(petal_image, w+15*p, h);
+
+		}
+		//swapImage(neutral);
+	}
+
+	
+	function check(petals) {
+		//i++;
+		if (i < petals) {
+			if (i % 2 != 0) {
+				swapImage(yes);
+			}
+			else {
+				swapImage(no);
+				}
+		}
+		else if (i == petals) {
+			if (i % 2 != 0) {
+				swapImage(win);
+			}
+			else {
+				swapImage(defeat);
+			}
+		}
+	}
+	ctx.rotate(0 * Math.PI / 180);
+
+</script>
+</canvas>
+<br><br><br>
+<!--<button onclick="start(); petal_gen(petals)">reset</button>-->
+</div>
+</html>

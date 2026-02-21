@@ -1,0 +1,37 @@
+<html>
+<link rel="icon" type="image/png" href="assets/sprites.png">
+<head>
+	<title>Pong</title>
+	<meta name="viewport" content="initial-scale=1">
+	<style>
+		canvas {
+     		-webkit-touch-callout: none;
+     		-webkit-user-select: none;
+     		-khtml-user-select: none;
+     		-moz-user-select: none;
+     		-ms-user-select: none;
+     		-o-user-select: none;
+     		user-select: none;
+     	}
+	</style>
+</head>
+
+<br>
+<div style="text-align: center;">
+
+<canvas id="canvas" style="background: black" width="500" height="375">
+
+	<img id="neutral" src="assets/neutral.png">
+	<img id="yes" src="assets/yes.png">
+	<img id="no" src="assets/no.png">
+	<img id="win" src="assets/win.png">
+	<img id="defeat" src="assets/defeat.png">
+	<img id="petal_image" src="assets/petal.png">
+
+</canvas>
+<br><br><br>
+<button onclick="y=0;">restart</button>
+<button onclick="pause=!pause;">pause</button>
+</div>
+<script src="script.js"></script>
+</html>

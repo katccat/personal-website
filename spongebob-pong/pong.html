@@ -1,0 +1,165 @@
+<html>
+<link rel="icon" type="image/png" href="/pong/Images/game.png">
+<head>
+<title>Pong Rip-off</title>
+<style>
+    html {
+        zoom: 60%;
+    }
+	a:link {color: black;text-decoration: none;}
+  	a:visited {color: black;text-decoration: none;}
+  	a:hover {color: black;text-decoration: underline;}
+  	h1 {
+        display: block;
+        font-size: 2em;
+        margin-top: 0em;
+        margin-bottom: 0em;
+        margin-left: 0;
+        margin-right: 0;
+        font-weight: bold;
+</style>
+<script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script> 
+<script>
+function start(){
+	sjs.open("target", 1000,1000);
+
+//ball properties
+var ball = new sjs.Image("Images/plankton.png");
+
+ball.type="ball";
+ball.setSize(100,100);
+ball.centerH().offset(0,600);
+ball.pushUp(17).pushLeft(17);
+ball.friction=0;
+ball.bounce();
+
+//player paddle properties
+var topPaddle = new sjs.Image("Images/topbun.png");
+
+topPaddle.moveTo(400,300);
+topPaddle.type="paddle";
+topPaddle.setSize(216,77.5);
+topPaddle.friction=0.05;
+
+//enemy padddle properties
+var bottomPaddle= new sjs.Image("Images/bottombun.png");
+
+bottomPaddle.moveTo(400,1000);
+bottomPaddle.type="enemy";
+bottomPaddle.setSize(216,77.5);
+bottomPaddle.friction=0.05;
+
+//paycheck setup
+var paycheck = 0;
+
+var paycheckTxt = new sjs.Text("Paycheck: $0", 25, "green");
+paycheckTxt.moveTo(200,110);
+
+//money picture
+var money = new sjs.Image("Images/money.png");
+money.type = "prop";
+money.setSize(120,80);
+money.moveTo(0,130);
+
+//music
+var music = new Audio("Music/jelly.mp3");
+
+//bubble border properties
+var border = new sjs.Image ("Images/bubbles.png");
+border.type = "border";
+border.setSize(1000,60);
+border.center().moveTo(0,240);
+
+//"stats" text
+var stats = new sjs.Image("Images/statistics.png");
+stats.setSize(450,75);
+stats.centerH().offset(0,25);
+
+//ouch sound
+var ouch = new Audio("Music/ouch.mp3");
+
+//"stats" image
+var statsIMG = new sjs.Image("Images/stats.png")
+statsIMG.type = "prop";
+statsIMG.setSize(190,228);
+
+//"A" and "D" controls
+sjs.keyDown(A_KEY, function(){
+
+topPaddle.pushLeft(3.5);
+
+});
+
+sjs.keyDown(D_KEY, function(){
+
+topPaddle.pushRight(3.5);
+
+});
+
+//get rid of these later
+sjs.keyDown(LEFT_KEY, function(){
+
+bottomPaddle.pushLeft(3.5);
+
+});
+
+sjs.keyDown(RIGHT_KEY, function(){
+
+bottomPaddle.pushRight(3.5);
+
+});
+
+//music controls
+sjs.keyDown(M_KEY, function(){
+
+music.play();
+
+});
+
+sjs.keyDown(X_KEY, function(){
+
+music.pause();
+
+});
+
+//player's paddle and ball collision
+sjs.onHit("ball","paddle", function(ball,paddle){
+sjs.bounceOff(ball,paddle);
+ouch.play();
+
+});
+
+//ball and bottom screen collision
+sjs.onHit("ball", ["bottom_screen"], function(ball,bottom_screen){
+sjs.bounceOff(ball,bottom_screen);
+paycheck = paycheck + 1;
+paycheckTxt.setText("Paycheck: $"+ paycheck);
+
+});
+
+//ball and bubble border collision
+sjs.onHit("ball","border", function(ball,bubbles){
+paycheck = paycheck - 1;
+paycheckTxt.setText("Paycheck: $"+ paycheck);
+sjs.bounceOff(ball,border);
+
+});
+
+//ball and enemy paddle collision
+sjs.onHit("ball","enemy", function(ball,enemy){
+sjs.bounceOff(ball,enemy);
+ouch.play();
+
+});
+
+}
+
+</script> 
+</head> 
+<body onload="start()"> 
+<h1> 
+<a href="/spongebob-pong">Stop Plankton!</a>
+</h1>
+<div id="target" style="margin:auto;background:black;"></div> 
+</body> 
+</html> 

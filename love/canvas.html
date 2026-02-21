@@ -1,0 +1,55 @@
+<html>
+
+<button onclick="score(petals)">test</button>
+<button onclick="gen()">test 2</button>
+<canvas id="frame" width="256" height="256" onload="gen()" onclick="score(petals)" style="background-color: gray;">
+	<img id="face" src="assets/neutral.png">
+</canvas>
+<script>
+		function gen() {
+			frame = document.getElementById("frame");
+  			face = document.getElementById("face");
+  			ctx = frame.getContext("2d");
+  			ctx.drawImage(face,128,128);
+		}
+	gen();
+		function start() {
+			petals = 8//Math.floor(Math.random() * 14) + 1;
+			i = 1;
+			//document.getElementById("frame").style.backgroundImage = "url('assets/neutral.png')";
+
+		}
+
+		start();
+
+		function score(petals) {
+			if (i < petals) {
+				if (i % 2 != 0) {
+					//frame.style.backgroundImage = "url('assets/yes.png')";
+					face.src = "assets/yes.png";
+					ctx.drawImage(face,128,128);
+				}
+				else {
+					//frame.style.backgroundImage = "url('assets/no.png')";
+					face.src = "assets/no.png";
+					ctx.drawImage(face,128,128);
+				}
+				i++;
+			}
+			else if (i == petals) {
+				if (i % 2 != 0) {
+					//frame.style.backgroundImage = "url('assets/win.png')";
+					face.src = "assets/win.png";
+					ctx.drawImage(face,128,128);
+				}
+				else {
+					//frame.style.backgroundImage = "url('assets/defeat.png')";
+					face.src = "assets/defeat.png";
+					ctx.drawImage(face,128,128);
+				}
+			}
+		}
+
+	</script>
+<button onclick="start()">reset</button>
+</html>

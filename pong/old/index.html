@@ -1,0 +1,83 @@
+<html>
+<link rel="icon" type="image/png" href="trails.png">
+<head>
+	<title>Pong</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=.59, user-scalable=no"> 
+	<style>
+		body {
+			background-color: black;
+			color: white;
+			font-family: "Helvetica", "Arial", sans-serif;
+		}
+		canvas {
+     		-webkit-touch-callout: none;
+     		-webkit-user-select: none;
+     		-khtml-user-select: none;
+     		-moz-user-select: none;
+     		-ms-user-select: none;
+     		-o-user-select: none;
+     		user-select: none;
+
+     		background-color: black;
+     		/*background-image: url("background.png");*/
+     		border: 1px solid white;
+     	}
+     	button {
+     		-webkit-touch-callout: none;
+     		-webkit-user-select: none;
+     		-khtml-user-select: none;
+     		-moz-user-select: none;
+     		-ms-user-select: none;
+     		-o-user-select: none;
+     		color: white;
+     		background-color: transparent;
+     		border: 1px solid white;
+     	}
+     	.controls {
+     		user-select: none;
+     		font-size: 230px;
+     	}
+     	.uncollapse {
+     		font-size: 14px;
+     		cursor: pointer;
+     		text-decoration: underline;
+     	}
+	</style>
+</head>
+<!--<h1>this shit is still brokeb lol</h1>
+<p>high refesh rates will not work</h1>-->
+<div style="text-align: center;">
+
+<p id="score">0 - 0</p>
+
+<canvas id="canvas" width="600" height="360"></canvas>
+
+<div id="container" style="display: none">
+<br>
+<button ontouchstart="key[38] = true;" ontouchend="key[38] = false;" 
+onmousedown="key[38] = true;" onmouseup="key[38] = false;"
+class="controls">&nbsp;&nbsp;&nbsp;&nbsp;</button> 
+
+<button ontouchstart="key[40] = true;" ontouchend="key[40] = false;"
+onmousedown="key[40] = true;" onmouseup="key[40] = false;" 
+class="controls">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+<!--
+<br>
+<button onclick="replay();">restart</button>
+<button onclick="pause();" id="button">pause</button>
+-->
+</div>
+
+<p onclick="
+if (document.getElementById('container').style.display=='none') {
+	document.getElementById('container').style.display='block';
+}
+else {
+	document.getElementById('container').style.display='none';
+}" class="uncollapse">enable touch controls</p>
+
+</div>
+<script src="objects.js"></script>
+<script src="script.js"></script>
+</html>

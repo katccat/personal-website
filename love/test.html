@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Image to use:</p>
+
+
+<p>Canvas to fill:</p>
+<canvas id="frame" width="250" height="300"
+style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML canvas tag.
+<img id="ccc" src="assets/no.png">
+</canvas>
+
+<p><button onclick="myCanvas()">Try it</button></p>
+
+<script>
+function myCanvas() {
+  var c = document.getElementById("frame");
+  var ctx = c.getContext("2d");
+  var ccc = document.getElementById("ccc");
+  ctx.drawImage(ccc,10,10);
+}
+</script>
+
+</body>
+</html>

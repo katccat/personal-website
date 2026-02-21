@@ -1,0 +1,106 @@
+<!-- by Khan -->
+<!doctype html>
+<html lang="en">
+<link rel="icon" type="image/png" href="favicon.png">
+<head>
+	<title>Asteroids 100</title>
+	<style>
+		body {
+			font-family: sans-serif, "Helvetica", "Arial";
+			color: white;
+			font-weight: lighter;
+			background-color: black;
+		}
+		b {
+			font-weight: normal;
+		}
+		.toggle {
+			text-decoration: none;
+			cursor: pointer;
+		}
+		.toggle:hover {
+			text-decoration: underline;
+		}
+     	#container {
+     		position: absolute;
+  			top: 50%;
+  			left: 40%;
+  			transform: translate(-50%, -50%);
+  			background-color: black;
+  			border: 1px solid white;
+     	}
+     	#container, canvas {
+     		width: 720px;
+     		height: 624px;/*15: 13;*/
+     	}
+     	#paused {
+     		position: absolute;
+     		z-index: 2;
+     		margin-left: 25px;
+     		color: #77ff75;
+     	}
+     	#score {
+     		position: absolute;
+     		z-index: 2;
+     		right: 25px;
+     		text-align: right;
+     	}
+     	#back {
+     		position: absolute;
+     		z-index: 1;
+     		image-rendering: crisp-edges;
+     		image-rendering: -webkit-optimize-contrast;
+     	}
+     	#info {
+     		text-align: right;
+     		float: right;
+     		width: fit-content;
+     	}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<p id="paused"></p>
+		<p id="score">0</p>
+		<canvas id="back" width="1080" height="936"></canvas>
+	</div>
+	<div id="info">
+		<b id="highscore"></b>
+		<br><br>
+		<p>
+			WAD/Arrows to move<br>
+			Space or Z to shoot<br>
+			P to pause<br>
+			R to restart
+		</p>
+		<p><br>
+			Game Settings<br>
+			<i>(may only affect new objects)</i>
+			<br><br>
+			<span style="color: #03cc00" class="toggle" onclick="localStorage.removeItem('throttle');location.reload()">
+			Recheck refresh rate</span>
+			<br><br>
+			<span style="color: red" class="toggle" onclick="toggle_me.call(this);shootable_cherries=!shootable_cherries">
+			Shootable Cherries</span>
+			<br><br>
+			<span style="color: red" class="toggle" onclick="toggle_me.call(this);asteroids_can_collide=!asteroids_can_collide">
+			Asteroids can collide</span>
+			<br><br>
+			<span style="color: red" class="toggle" onclick="toggle_me.call(this);aggressive_ufos=!aggressive_ufos">
+			Aggressive UFOs</span>
+			<br><br>
+			<span style="color: red" class="toggle" onclick="toggle_me.call(this);fast_satellites=!fast_satellites">
+			Fast Satellites</span>
+			<br><br>
+			<span style="color: red" class="toggle" onclick="toggle_me.call(this);damon_mode=!damon_mode">
+			Damon Mode</span>
+			<br><br>
+			<span style="color: red" class="toggle" onclick="toggle_me.call(this);disable_highscore=!disable_highscore">
+			Disable highscore</span>
+		</p>
+	</div>
+	<script src="utils.js?v=praire"></script>
+	<script src="objects.js?v=dddooggg"></script>
+	<script src="main.js?v=squueeaakk"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<link rel="icon" type="image/png" href="images/neutral.png">
+<head>
+	<title>Loves Me?</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body {
+			text-align: center;
+			-webkit-touch-callout: none;
+     		-webkit-user-select: none;
+     		-webkit-tap-highlight-color:rgba(0,0,0,0);
+     		-khtml-user-select: none;
+     		-moz-user-select: none;
+     		-ms-user-select: none;
+     		-o-user-select: none;
+     		user-select: none;
+		}
+		#canvas {
+			background-image: url("images/bg1.png");
+		}
+     	@media (hover: hover) and (pointer: fine) {
+     		#music {
+     			display: none;
+     		}
+		}
+	</style>
+</head>
+<body>
+	<br><br><br><br><br><br><br><br><br>
+	<canvas id="text" width="253" height="32">
+		<img id="lovesme" src="images/lovesme.png">
+		<img id="lovesmenot" src="images/lovesmenot.png">
+		<img id="reallylovesme" src="images/reallylovesme.png">
+		<img id="reallylovesmenot" src="images/reallylovesmenot.png">
+	</canvas>
+	<br><br>
+	<canvas id="canvas" width="162" height="162" title="press 'M' for music!" onclick="update()">
+		<img id="neutral" src="images/neutral.png">
+		<img id="petal_image" src="images/petal.png">
+		<img id="yes" src="images/yes.png">
+		<img id="no" src="images/no.png">
+		<img id="win" src="images/win.png">
+		<img id="defeat" src="images/defeat.png">
+	</canvas>
+	<br><br>
+	<button onclick="music_toggle()" id="music">music</button>
+	<!--<button onclick="start()">regen</button>-->
+	<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pong Rip-off</title>
+<style>
+	html {
+		zoom: 60%;
+    }
+</style>
+<script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+<script>
+function start(){
+sjs.open("target",1000,1000)
+
+var game = new sjs.Image("Images/game.png");
+game.type="prop";
+game.setSize(1000,1000);
+game.center();
+
+var button = new sjs.Button("PLAY", function(){window.location="pong.html";
+});
+button.center();
+
+var info = new sjs.Text("By Me",30,"blue");
+info.center().offset(0,50);
+
+var lose = new sjs.Image("Images/lost.png")
+lose.setSize(550,125);
+lose.center().offset(0,-100);
+
+} //end start
+</script>
+</head>
+<body onload="start()">
+<h1> Menu </h1>
+
+<div id="target" style="margin:auto;background:black;"></div>
+</body>
+</html>
+<!--by Rehan Hassan-->

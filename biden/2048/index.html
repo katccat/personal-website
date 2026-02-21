@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Joe Biden 2048</title>
+
+    <link href="style/main.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" href="meta/apple-touch-icon.png" />
+    <link
+      rel="apple-touch-startup-image"
+      href="meta/apple-touch-startup-image-640x1096.png"
+      media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+    />
+    <!-- iPhone 5+ -->
+    <link
+      rel="apple-touch-startup-image"
+      href="meta/apple-touch-startup-image-640x920.png"
+      media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"
+    />
+    <!-- iPhone, retina -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta
+      name="viewport"
+      content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="heading">
+        <h1 class="title">
+          <span
+            >Brandon 2048<span id="copy_message" style="visibility: hidden">   Copied!</span></span></span>
+        </h1>
+        <div class="scores-container">
+          <button onclick="copyTextToClipboard()">
+            <div class="score-container" id = "userscore">0</div>
+          </button>
+          <div class="best-container">0</div>
+        </div>
+      </div>
+
+      <div class="above-game">
+        <p class="game-intro">
+          Join the numbers and get to the <strong>2048 tile!</strong>
+        </p>
+        <a class="restart-button">New Game</a>
+      </div>
+
+      <div class="game-container">
+        <div class="game-message">
+          <p></p>
+          <div class="lower">
+            <a class="keep-playing-button">Keep going</a>
+            <a class="retry-button">Try again</a>
+          </div>
+        </div>
+
+        <div class="grid-container">
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+        </div>
+
+        <div class="tile-container"></div>
+      </div>
+
+      <p class="game-explanation">
+        <strong class="important">How to play:</strong> Use your
+        <strong>arrow keys</strong> to move the tiles. When two tiles with the
+        same picture touch, they <strong>merge into one!</strong>
+      </p>
+      <hr />
+      <p></p>
+      <hr />
+      <p></p>
+    </div>
+
+    <script>
+      function copyTextToClipboard(text) {
+        var textArea = document.createElement("textarea");
+
+        //
+        // *** This styling is an extra step which is likely not required. ***
+        //
+        // Why is it here? To ensure:
+        // 1. the element is able to have focus and selection.
+        // 2. if the element was to flash render it has minimal visual impact.
+        // 3. less flakyness with selection and copying which **might** occur if
+        //    the textarea element is not visible.
+        //
+        // The likelihood is the element won't even render, not even a
+        // flash, so some of these are just precautions. However in
+        // Internet Explorer the element is visible whilst the popup
+        // box asking the user for permission for the web page to
+        // copy to the clipboard.
+        //
+
+        // Place in the top-left corner of screen regardless of scroll position.
+        textArea.style.position = "fixed";
+        textArea.style.top = 0;
+        textArea.style.left = 0;
+
+        // Ensure it has a small width and height. Setting to 1px / 1em
+        // doesn't work as this gives a negative w/h on some browsers.
+        textArea.style.width = "2em";
+        textArea.style.height = "2em";
+
+        // We don't need padding, reducing the size if it does flash render.
+        textArea.style.padding = 0;
+
+        // Clean up any borders.
+        textArea.style.border = "none";
+        textArea.style.outline = "none";
+        textArea.style.boxShadow = "none";
+
+        // Avoid flash of the white box if rendered for any reason.
+        textArea.style.background = "transparent";
+        
+        var full = document.getElementById("userscore").textContent;
+        if(full != "0")
+        textArea.value = full.substring(0, full.indexOf('+'));
+        else
+        textArea.value = "0"
+
+        console.log(document.getElementById("userscore").textContent);
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+
+        try {
+          var successful = document.execCommand("copy");
+          var msg = successful ? "successful" : "unsuccessful";
+          console.log("Copying text command was " + msg);
+        } catch (err) {
+          console.log("Oops, unable to copy");
+        }
+
+        var copy_message = document.getElementById("copy_message");
+        copy_message.style.visibility = "visible";
+        setTimeout(() => {
+          copy_message.style.visibility = "hidden";
+        }, 2000);
+
+        document.body.removeChild(textArea);
+      }
+    </script>
+    <script src="js/bind_polyfill.js"></script>
+    <script src="js/classlist_polyfill.js"></script>
+    <script src="js/animframe_polyfill.js"></script>
+    <script src="js/keyboard_input_manager.js"></script>
+    <script src="js/html_actuator.js"></script>
+    <script src="js/grid.js"></script>
+    <script src="js/tile.js"></script>
+    <script src="js/local_storage_manager.js"></script>
+    <script src="js/game_manager.js"></script>
+    <script src="js/application.js"></script>
+  </body>
+</html>

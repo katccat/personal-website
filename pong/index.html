@@ -1,0 +1,91 @@
+<!--by Khan-->
+<!doctype html>
+<html lang="en">
+<link rel="icon" type="image/png" href="favicon.png">
+<head>
+	<title>Pong</title>
+	<meta name="viewport" content="initial-scale=.49, user-scalable=no"> 
+	<style>
+		@font-face {
+			font-family: pongscore;
+			src: url(pongscore.otf);
+		}
+		body {
+			background-color: black;
+			color: lightgray;
+			font-family: "Helvetica", "Arial", sans-serif;
+			text-align: center;
+		}
+		button {
+     		-webkit-touch-callout: none;
+     		-webkit-user-select: none;
+     		-khtml-user-select: none;
+     		-moz-user-select: none;
+     		-ms-user-select: none;
+     		-o-user-select: none;
+     		user-select: none;
+     		color: lightgray;
+     		background-color: transparent;
+     		border: 1px dotted lightgray;
+     		font-size: 250px;
+     	}
+		#container, #overlay, #front, #back {
+     		width: 725px;
+     		height: 500px;
+     	}
+     	#container {
+     		margin-left: auto;
+     		margin-right: auto;
+     		text-align: left;
+     	}
+     	#overlay {
+     		z-index: 3;
+     		position: absolute;
+     	}
+     	#front {
+     		z-index: 2;
+     		position: absolute;
+     	}
+     	#back {
+     		z-index: 1
+     		position: absolute;
+     	}
+     	#uncollapse {
+     		font-size: 14px;
+     		cursor: pointer;
+     		text-decoration: underline;
+     	}
+     	@media (hover: hover) and (pointer: fine) {
+     		#uncollapse {
+     			display: none;
+     		}
+		}
+	</style>
+</head>
+<body>
+	<br><br><br>
+	<div id="container">
+		<img id="overlay" src="scanlines.png">
+		<canvas id="front" width="522" height="360"></canvas>
+		<canvas id="back" width="522" height="360"></canvas>
+	</div>
+	<p onclick="
+	if (document.getElementById('controls').style.display=='none') {
+		document.getElementById('controls').style.display='block';
+	}
+	else {
+		document.getElementById('controls').style.display='none';
+	}" id="uncollapse">enable touch controls</p>
+	<div id="controls" style="display: none;">
+		<button ontouchstart="player.upward = true;" ontouchend="player.upward = false;" 
+		onmousedown="player.upward = true;" onmouseup="player.upward = false;">
+		&nbsp;&nbsp;&nbsp;&nbsp;</button> 
+		<button ontouchstart="player.downward = true;" ontouchend="player.downward = false;" 
+		onmousedown="player.downward = true;" onmouseup="player.downward = false;">
+		&nbsp;&nbsp;&nbsp;&nbsp;</button> 
+	</div>
+	<!--<script src="objects.js"></script>
+	<script src="main.js"></script>-->
+	<script src="script.js"></script>
+</body>
+</html>

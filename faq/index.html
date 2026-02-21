@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<link rel="icon" type="image/png" href="/robots/favicon.png">
+<link rel="stylesheet" href="/styles.css?v=4">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<title id="title">F.A.Q.</title>
+	<style>
+		@media only screen and (max-width: 600px) {
+			.panel2 {
+				padding-left: 0px;
+				padding-right: 0px;
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+<body>
+
+<div class="wrapper">
+	<div class="panel2">
+		<h2 id="header">F.A.Q.</h2>
+		<div style="position: relative;">
+			<img id="thumbnail" src="/robots/robot02.png" style="position: relative;"
+			onmouseover="bubble.style.visibility = 'visible'" 
+			onmouseleave="bubble.style.visibility = 'hidden'">
+			<img src="/images/scrolldown.png" id="bubble">
+		</div>
+		<div id="caption">
+			<p style="text-align: left;">
+			Q: What are your goals?<br>
+			A: I wish to better humanity and teach them to be more humble!
+			<br><br>
+			Q: What is the ClayRobot Fund?<br>
+			A: I don't know!
+			<br><br>
+			Q: How do you tell if you are a clay robot?<br>
+			A: Do you have passion? Do you think for yourselve? Being a Clay Robot means demonstrating G.R.I.T. throuhgout every facet of life. G is for Greatness. R is for Robot. I is for Introspection. T is for Time-Management!
+			<br><br>
+			Q: Are these clay robots in the room with us right now?<br>
+			A: Clay Robots are always looking after your wellbeing!
+			<br><br>
+			Q: <span id="question"><input type="text" id="field" style="width: 90%; box-sizing: border-box;"></span><br>
+			A: <span id="answer"></span>
+			</p>
+		</div>
+	</div>
+</div><!--end of wrapper-->
+</body>
+<script>
+const field = document.getElementById("field");
+const Q = document.getElementById("question");
+const A = document.getElementById("answer");
+
+field.addEventListener("keypress", function(event) {
+	if (event.keyCode === 13 && field.value !== "") {
+		Q.textContent = field.value;
+		A.textContent = Advanced_Robot_AI(field.value);
+	}
+});
+
+function Advanced_Robot_AI(question) {
+	const answers = [
+		"I don't know!",
+		"Clay Robots are always looking after your wellbeing!",
+		"I only know what they tell me!",
+		"Thank you!",
+		"I'll ask!",
+		"Have a nice day!",
+		"We'll keep in touch!",
+		"Good question!"];
+	return answers[Math.floor(Math.random() * answers.length)];
+}
+</script>
+</html>
