@@ -134,7 +134,7 @@ function get_content(title) {
 		}
 		else {
 			console.log("Google fallback requested ^");
-			fetch("https://clayrobot.net:8000/backend/randombirds?bird=" + title, {
+			fetch("https://backend.clayrobot.net:8000/randombirds?bird=" + title, {
 	                headers: {
 	                        'Referer': referrer
 	                }
