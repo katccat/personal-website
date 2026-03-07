@@ -1,0 +1,3 @@
+[submodule "recaptcha"]
+	path = recaptcha
+	url = https://github.com/katccat/google-image-memory-game.git
